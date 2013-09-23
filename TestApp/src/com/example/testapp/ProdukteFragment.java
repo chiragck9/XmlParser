@@ -52,24 +52,22 @@ public class ProdukteFragment extends Fragment{
 						int arg2, long arg3) {
 					String key = mAuthorsList.get(arg2);
 					// Search the XML from both urls using the selected element
-					getWorksOfAuthors(arg0.getContext(),key,urls);
+					getWorksOfAuthors(key,urls);
 				}
 	        });
 		return v;
 
 	}
 	
-	public void getWorksOfAuthors(Context context,String key, String[] url){		
-		new BackgroundTask(context,key).execute(url);
+	public void getWorksOfAuthors(String key, String[] url){		
+		new BackgroundTask(key).execute(url);
 	}
 	
 	class BackgroundTask extends AsyncTask<String, Void, List<String>> {
 
 	    String key;
-	    Context mContext;
-	    public BackgroundTask(Context acontext,String aKey){
+	    public BackgroundTask(String aKey){
 	    	key = aKey;
-	    	mContext = acontext;
 	    	
 	    }
 	    
